@@ -1,23 +1,23 @@
 package com.rh.management.models;
 
-import java.time.LocalDateTime;
-
-public class Funcionario {
+public class Usuario {
     private int id;
     private String nome;
     private String cpf;
     private String endereco;
     private String telefone;
     private String cargo;
-    private Departamento departamento;
+    private String departamento;
     private double salario;
-    private LocalDateTime dataAdmissao;
+    private String dataAdmissao;
     private String contaBancaria;
+    private String beneficios;
     private boolean ativo;
 
     // Construtor
-    public Funcionario(int id, String nome, String cpf, String endereco, String telefone, String cargo, 
-                       Departamento departamento, double salario, String contaBancaria) {
+    public Usuario(int id, String nome, String cpf, String endereco, String telefone, String cargo, 
+                   String departamento, double salario, String dataAdmissao, String contaBancaria, 
+                   String beneficios, boolean ativo, String username, String password) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -26,11 +26,13 @@ public class Funcionario {
         this.cargo = cargo;
         this.departamento = departamento;
         this.salario = salario;
+        this.dataAdmissao = dataAdmissao;
         this.contaBancaria = contaBancaria;
-        this.dataAdmissao = LocalDateTime.now();
-        this.ativo = true;  // Todos os funcionários começam como ativos
-    }
+        this.beneficios = beneficios;
+        this.ativo = ativo;
+       }
 
+    // Getters e Setters
     public int getId() {
         return id;
     }
@@ -79,11 +81,11 @@ public class Funcionario {
         this.cargo = cargo;
     }
 
-    public Departamento getDepartamento() {
+    public String getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(Departamento departamento) {
+    public void setDepartamento(String departamento) {
         this.departamento = departamento;
     }
 
@@ -95,11 +97,11 @@ public class Funcionario {
         this.salario = salario;
     }
 
-    public LocalDateTime getDataAdmissao() {
+    public String getDataAdmissao() {
         return dataAdmissao;
     }
 
-    public void setDataAdmissao(LocalDateTime dataAdmissao) {
+    public void setDataAdmissao(String dataAdmissao) {
         this.dataAdmissao = dataAdmissao;
     }
 
@@ -111,6 +113,14 @@ public class Funcionario {
         this.contaBancaria = contaBancaria;
     }
 
+    public String getBeneficios() {
+        return beneficios;
+    }
+
+    public void setBeneficios(String beneficios) {
+        this.beneficios = beneficios;
+    }
+
     public boolean isAtivo() {
         return ativo;
     }
@@ -118,6 +128,36 @@ public class Funcionario {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
-    
+   
+
+    public void atualizarInformacoes(String endereco, String telefone, String cargo, 
+    String departamento, double salario, 
+    String contaBancaria, String beneficios) {
+this.endereco = endereco;
+this.telefone = telefone;
+this.cargo = cargo;
+this.departamento = departamento;
+this.salario = salario;
+this.contaBancaria = contaBancaria;
+this.beneficios = beneficios;
 }
 
+public void desativarFuncionario() {
+this.ativo = false;
+}
+
+public void ativarFuncionario() {
+this.ativo = true;
+}
+
+public CharSequence getUsername() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getUsername'");
+}
+
+public CharSequence getPassword() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+}
+
+}
