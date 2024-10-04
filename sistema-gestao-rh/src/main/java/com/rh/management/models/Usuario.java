@@ -13,6 +13,8 @@ public class Usuario {
     private String contaBancaria;
     private String beneficios;
     private boolean ativo;
+    private String username;  // Adicionado o campo username
+    private String password;  // Adicionado o campo password
 
     // Construtor
     public Usuario(int id, String nome, String cpf, String endereco, String telefone, String cargo, 
@@ -30,7 +32,9 @@ public class Usuario {
         this.contaBancaria = contaBancaria;
         this.beneficios = beneficios;
         this.ativo = ativo;
-       }
+        this.username = username;  // Atribui o valor do username
+        this.password = password;  // Atribui o valor do password
+    }
 
     // Getters e Setters
     public int getId() {
@@ -128,36 +132,44 @@ public class Usuario {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
-   
 
+    // Atualização de informações
     public void atualizarInformacoes(String endereco, String telefone, String cargo, 
-    String departamento, double salario, 
-    String contaBancaria, String beneficios) {
-this.endereco = endereco;
-this.telefone = telefone;
-this.cargo = cargo;
-this.departamento = departamento;
-this.salario = salario;
-this.contaBancaria = contaBancaria;
-this.beneficios = beneficios;
-}
+                                     String departamento, double salario, 
+                                     String contaBancaria, String beneficios) {
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.cargo = cargo;
+        this.departamento = departamento;
+        this.salario = salario;
+        this.contaBancaria = contaBancaria;
+        this.beneficios = beneficios;
+    }
 
-public void desativarFuncionario() {
-this.ativo = false;
-}
+    // Desativar funcionário
+    public void desativarFuncionario() {
+        this.ativo = false;
+    }
 
-public void ativarFuncionario() {
-this.ativo = true;
-}
+    // Ativar funcionário
+    public void ativarFuncionario() {
+        this.ativo = true;
+    }
 
-public CharSequence getUsername() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getUsername'");
-}
+    // Implementação dos métodos getUsername() e getPassword()
+    public String getUsername() {
+        return this.username;
+    }
 
-public CharSequence getPassword() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
-}
+    public String getPassword() {
+        return this.password;
+    }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

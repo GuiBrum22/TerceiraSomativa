@@ -1,6 +1,7 @@
 package com.rh.management.Controllers;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -65,6 +66,10 @@ public class FolhaPagamentoController {
             e.printStackTrace();
             System.out.println("Erro ao gerar a folha de pagamento.");
         }
+    }
+
+    public void gerarFolhaPagamentoTXT(List<Usuario> funcionarios) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
     
