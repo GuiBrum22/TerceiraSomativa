@@ -164,7 +164,8 @@ public class PontoController {
         System.out.println("Horas totais trabalhadas pelo funcionário ID: " + funcionarioId + " = " + horasTotais + " horas");
     }
 
+    // Método para listar todos os pontos
     public List<Ponto> listarPontos() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return pontos;
     }
 }

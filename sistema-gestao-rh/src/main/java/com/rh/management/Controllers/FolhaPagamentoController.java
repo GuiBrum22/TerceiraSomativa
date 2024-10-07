@@ -13,7 +13,7 @@ public class FolhaPagamentoController {
     private static final double INSS_PERCENTUAL = 0.08;
     private static final double FGTS_PERCENTUAL = 0.08;
     private static final double VALE_TRANSPORTE_PERCENTUAL = 0.06;
-    private static final double VALE_REFEICAO = 300.00; // valor fixo de benefício de refeição
+    private static final double VALE_REFEICAO = 0.04; // valor fixo de benefício de refeição
 
     // Método para gerar a folha de pagamento
     public void gerarFolhaPagamento(Usuario funcionario, long horasTrabalhadas) {
@@ -25,6 +25,7 @@ public class FolhaPagamentoController {
         double descontoINSS = salarioFinal * INSS_PERCENTUAL;
         double descontoFGTS = salarioFinal * FGTS_PERCENTUAL;
         double descontoValeTransporte = salarioFinal * VALE_TRANSPORTE_PERCENTUAL;
+        double descontoValeRefeicao = salarioFinal * VALE_REFEICAO;
 
         // Cálculo do salário líquido
         double salarioLiquido = salarioFinal - descontoINSS - descontoFGTS - descontoValeTransporte + VALE_REFEICAO;
@@ -55,7 +56,7 @@ public class FolhaPagamentoController {
             documento.add(new Paragraph("INSS (8%): R$ " + String.format("%.2f", descontoINSS)));
             documento.add(new Paragraph("FGTS (8%): R$ " + String.format("%.2f", descontoFGTS)));
             documento.add(new Paragraph("Vale Transporte (6%): R$ " + String.format("%.2f", descontoValeTransporte)));
-            documento.add(new Paragraph("Vale Refeição: R$ " + String.format("%.2f", VALE_REFEICAO)));
+            documento.add(new Paragraph("Vale Refeição: R$ " + String.format("%.2f", descontoValeRefeicao)));
             documento.add(new Paragraph("-----------------------------"));
             documento.add(new Paragraph("Salário Líquido: R$ " + String.format("%.2f", salarioLiquido)));
 

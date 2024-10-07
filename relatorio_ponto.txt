@@ -1,0 +1,7 @@
+Relatório de Ponto
+-----------------------------
+ID do Funcionário: 1
+Entrada: 07/10/2024 14:55:45
+Saída: 07/10/2024 14:55:47
+Horas Trabalhadas: 0 horas
+-----------------------------

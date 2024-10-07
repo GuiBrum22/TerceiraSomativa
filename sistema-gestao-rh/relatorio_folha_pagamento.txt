@@ -1,0 +1,7 @@
+Relatório de Folha de Pagamento
+-----------------------------
+Nome: João Silva
+Salário: R$ 5000.0
+Cargo: Desenvolvedor
+Departamento: TI
+-----------------------------
