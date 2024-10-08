@@ -36,6 +36,18 @@
             <artifactId>layout</artifactId>
             <version>7.2.5</version> <!-- Verifique se essa versão existe -->
         </dependency>
+    
+      <dependency>
+        <groupId>org.gdl-lang.gdl-tools</groupId>
+        <artifactId>gdl-editor</artifactId>
+        <version>1.3.26</version>
+      </dependency>
+    
+      <dependency>
+        <groupId>org.gdl-lang.gdl-tools</groupId>
+        <artifactId>gdl-editor</artifactId>
+        <version>1.3.26</version>
+      </dependency>
     </dependencies>
 
     <build>

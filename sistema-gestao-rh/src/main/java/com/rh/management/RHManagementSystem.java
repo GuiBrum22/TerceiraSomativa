@@ -1,23 +1,90 @@
 package com.rh.management;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
+import javax.swing.table.TableCellRenderer;
+import java.util.function.Consumer;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.*;
+import java.util.List;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.GridLayout;
+import java.util.List;
+import javax.swing.*;
+import javax.swing.table.TableCellRenderer;
+import com.rh.management.Controllers.FolhaPagamentoController;
+import com.rh.management.Controllers.PontoController;
+import com.rh.management.Controllers.RelatorioController;
+import com.rh.management.Controllers.UsuarioController;
+import com.rh.management.models.Usuario;
 
 import com.rh.management.Controllers.FolhaPagamentoController;
 import com.rh.management.Controllers.PontoController;
 import com.rh.management.Controllers.RelatorioController;
 import com.rh.management.Controllers.UsuarioController;
 import com.rh.management.models.Usuario;
+
+class ButtonRenderer extends JButton implements TableCellRenderer {
+    public ButtonRenderer() {
+        setOpaque(true);
+    }
+
+    @Override
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        setText((value == null) ? "" : value.toString());
+        return this;
+    }
+}
+
+class ButtonEditor extends DefaultCellEditor {
+    protected JButton button;
+    private String label;
+    private boolean isPushed;
+    private int row;
+    private int column;
+    private JTable table;
+    private Consumer<Integer> action;
+
+    public ButtonEditor(JCheckBox checkBox, Consumer<Integer> action) {
+        super(checkBox);
+        this.action = action;
+        button = new JButton();
+        button.setOpaque(true);
+        button.addActionListener(e -> fireEditingStopped());
+    }
+
+    @Override
+    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+        this.table = table;
+        this.row = row;
+        this.column = column;
+        label = (value == null) ? "" : value.toString();
+        button.setText(label);
+        isPushed = true;
+        return button;
+    }
+
+    @Override
+    public Object getCellEditorValue() {
+        if (isPushed) {
+            action.accept(row); // Ação ao pressionar o botão
+        }
+        isPushed = false;
+        return label;
+    }
+
+    @Override
+    public boolean stopCellEditing() {
+        isPushed = false;
+        return super.stopCellEditing();
+    }
+}
+
 
 public class RHManagementSystem extends JFrame {
 
@@ -141,16 +208,15 @@ public class RHManagementSystem extends JFrame {
 
         voltarButton.addActionListener(e -> showControlPanel());
     }
-
-    // Listar usuários
+    //listar
     private void showListarUsuarios() {
         getContentPane().removeAll();
 
-        String[] colunas = {"ID", "Nome", "CPF", "Endereço", "Telefone", "Cargo", "Departamento", "Salário", "Atualizar"};
+        String[] colunas = {"ID", "Nome", "CPF", "Endereço", "Telefone", "Cargo", "Departamento", "Salário", "Ativar", "Desativar", "Editar"};
 
-        java.util.List<Usuario> usuarios = usuarioController.listarUsuarios();
-        String[][] dados = new String[usuarios.size()][9];
-        
+        List<Usuario> usuarios = usuarioController.listarUsuarios();
+        String[][] dados = new String[usuarios.size()][11];
+
         for (int i = 0; i < usuarios.size(); i++) {
             Usuario usuario = usuarios.get(i);
             dados[i][0] = String.valueOf(usuario.getId());
@@ -161,22 +227,97 @@ public class RHManagementSystem extends JFrame {
             dados[i][5] = usuario.getCargo();
             dados[i][6] = usuario.getDepartamento();
             dados[i][7] = String.valueOf(usuario.getSalario());
-            dados[i][8] = "Atualizar";
+            dados[i][8] = "Ativar";
+            dados[i][9] = "Desativar";
+            dados[i][10] = "Editar";
         }
 
-        JTable table = new JTable(dados, colunas);
+        JTable table = new JTable(dados, colunas) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return column >= 8;
+            }
+        };
+
+        table.getColumnModel().getColumn(8).setCellRenderer(new ButtonRenderer());
+        table.getColumnModel().getColumn(8).setCellEditor(new ButtonEditor(new JCheckBox(), row -> {
+            int id = Integer.parseInt(dados[row][0]);
+            usuarioController.ativarUsuario(id);
+            JOptionPane.showMessageDialog(this, "Usuário ativado!");
+            // Atualiza os relatórios após a ativação
+            relatorioController.gerarRelatorioFuncionariosAtivosTXT(usuarioController.listarUsuarios());
+        }));
+
+        table.getColumnModel().getColumn(9).setCellRenderer(new ButtonRenderer());
+        table.getColumnModel().getColumn(9).setCellEditor(new ButtonEditor(new JCheckBox(), row -> {
+            int id = Integer.parseInt(dados[row][0]);
+            usuarioController.desativarUsuario(id);
+            JOptionPane.showMessageDialog(this, "Usuário desativado!");
+            // Atualiza os relatórios após a desativação
+            relatorioController.gerarRelatorioFuncionariosAtivosTXT(usuarioController.listarUsuarios());
+        }));
+
+        table.getColumnModel().getColumn(10).setCellRenderer(new ButtonRenderer());
+        table.getColumnModel().getColumn(10).setCellEditor(new ButtonEditor(new JCheckBox(), row -> {
+            Usuario usuario = usuarioController.buscarUsuarioPorId(Integer.parseInt(dados[row][0]));
+            if (usuario != null) {
+                showEditUserForm(usuario);
+            }
+        }));
+
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
 
         JButton voltarButton = new JButton("Voltar");
         add(voltarButton, BorderLayout.SOUTH);
-
         voltarButton.addActionListener(e -> showControlPanel());
 
         revalidate();
         repaint();
     }
 
+    private void showEditUserForm(Usuario usuario) {
+        JDialog editDialog = new JDialog(this, "Editar Usuário", true);
+        editDialog.setLayout(new GridLayout(0, 2));
+
+        JTextField nomeField = new JTextField(usuario.getNome());
+        JTextField cpfField = new JTextField(usuario.getCpf());
+        JTextField enderecoField = new JTextField(usuario.getEndereco());
+        JTextField telefoneField = new JTextField(usuario.getTelefone());
+        JTextField cargoField = new JTextField(usuario.getCargo());
+        JTextField departamentoField = new JTextField(usuario.getDepartamento());
+        JTextField salarioField = new JTextField(String.valueOf(usuario.getSalario()));
+
+        editDialog.add(new JLabel("Nome:"));
+        editDialog.add(nomeField);
+        editDialog.add(new JLabel("CPF:"));
+        editDialog.add(cpfField);
+        editDialog.add(new JLabel("Endereço:"));
+        editDialog.add(enderecoField);
+        editDialog.add(new JLabel("Telefone:"));
+        editDialog.add(telefoneField);
+        editDialog.add(new JLabel("Cargo:"));
+        editDialog.add(cargoField);
+        editDialog.add(new JLabel("Departamento:"));
+        editDialog.add(departamentoField);
+        editDialog.add(new JLabel("Salário:"));
+        editDialog.add(salarioField);
+
+        JButton saveButton = new JButton("Salvar");
+        saveButton.addActionListener(e -> {
+            usuarioController.atualizarUsuario(usuario.getId(), enderecoField.getText(), telefoneField.getText(),
+                cargoField.getText(), departamentoField.getText(), Double.parseDouble(salarioField.getText()),
+                usuario.getContaBancaria(), usuario.getBeneficios());
+            editDialog.dispose();
+            showListarUsuarios();
+        });
+
+        editDialog.add(saveButton);
+        editDialog.pack();
+        editDialog.setLocationRelativeTo(this);
+        editDialog.setVisible(true);
+    }
+    
     // Tela de registro de ponto
     private void showRegistroPonto() {
         getContentPane().removeAll();

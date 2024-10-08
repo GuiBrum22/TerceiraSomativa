@@ -1,80 +1,68 @@
-Relatório de Folha de Pagamento
+    Relatï¿½rio de Funcionï¿½rios Ativos
 -----------------------------
-ID Relatório: 1
-Nome: Maria Souza
-Cargo: Analista
-Departamento: Financeiro
-Salário: R$ 4500.0
------------------------------
-ID Relatório: 1
+ID Relatï¿½rio: 1
 Nome: Lucas Mendes
 Cargo: Analista
 Departamento: TI
-Salário: R$ 4500.0
+Salï¿½rio: R$ 4500.0
 -----------------------------
-ID Relatório: 1
+ID Relatï¿½rio: 1
 Nome: Fernanda Costa
 Cargo: Desenvolvedor
 Departamento: TI
-Salário: R$ 5000.0
+Salï¿½rio: R$ 5000.0
 -----------------------------
-ID Relatório: 1
+ID Relatï¿½rio: 1
 Nome: Carlos Pereira
 Cargo: Gerente
 Departamento: Vendas
-Salário: R$ 7000.0
+Salï¿½rio: R$ 7000.0
 -----------------------------
-ID Relatório: 1
+ID Relatï¿½rio: 1
 Nome: Ana Lima
 Cargo: Assistente
 Departamento: RH
-Salário: R$ 3500.0
+Salï¿½rio: R$ 3500.0
 -----------------------------
-ID Relatório: 1
+ID Relatï¿½rio: 1
 Nome: JoÃ£o Silva
 Cargo: Desenvolvedor
 Departamento: TI
-Salário: R$ 5000.0
+Salï¿½rio: R$ 5000.0
 -----------------------------
-ID Relatório: 1
+ID Relatï¿½rio: 1
 Nome: Maria Souza
 Cargo: Analista
 Departamento: Financeiro
-Salário: R$ 4500.0
+Salï¿½rio: R$ 4500.0
 -----------------------------
-ID Relatório: 1
+ID Relatï¿½rio: 1
 Nome: Lucas Mendes
 Cargo: Analista
 Departamento: TI
-Salário: R$ 4500.0
+Salï¿½rio: R$ 4500.0
 -----------------------------
-ID Relatório: 1
+ID Relatï¿½rio: 1
 Nome: Fernanda Costa
 Cargo: Desenvolvedor
 Departamento: TI
-Salário: R$ 5000.0
+Salï¿½rio: R$ 5000.0
 -----------------------------
-ID Relatório: 1
+ID Relatï¿½rio: 1
 Nome: Carlos Pereira
 Cargo: Gerente
 Departamento: Vendas
-Salário: R$ 7000.0
+Salï¿½rio: R$ 7000.0
 -----------------------------
-ID Relatório: 1
+ID Relatï¿½rio: 1
 Nome: Ana Lima
 Cargo: Assistente
 Departamento: RH
-Salário: R$ 3500.0
+Salï¿½rio: R$ 3500.0
 -----------------------------
-ID Relatório: 1
-Nome: João Silva
+ID Relatï¿½rio: 1
+Nome: Joï¿½o Silva
 Cargo: Desenvolvedor
 Departamento: TI
-Salário: R$ 5000.0
------------------------------
-ID Relatório: 1
-Nome: cu
-Cargo: cu
-Departamento: cu
-Salário: R$ 61000.0
+Salï¿½rio: R$ 5000.0
 -----------------------------

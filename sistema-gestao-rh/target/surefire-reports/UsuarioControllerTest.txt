@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: UsuarioControllerTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.206 s <<< FAILURE! -- in UsuarioControllerTest
+UsuarioControllerTest.testListarPorDepartamento -- Time elapsed: 0.031 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Devem existir 2 usuários no departamento de TI ==> expected: <2> but was: <5>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:563)
+	at UsuarioControllerTest.testListarPorDepartamento(UsuarioControllerTest.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+UsuarioControllerTest.testCadastrarUsuario -- Time elapsed: 0.016 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: O nome deve ser João Silva ==> expected: <João Silva> but was: <JoÃ£o Silva>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1156)
+	at UsuarioControllerTest.testCadastrarUsuario(UsuarioControllerTest.java:32)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

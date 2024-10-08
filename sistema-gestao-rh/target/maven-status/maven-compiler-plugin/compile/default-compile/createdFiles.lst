@@ -1,7 +1,6 @@
 com\rh\management\models\Ponto.class
 com\rh\management\models\Usuario.class
 com\rh\management\RHManagementSystem.class
-com\rh\management\RHManagementSystem$1.class
 com\rh\management\Controllers\FolhaPagamentoController.class
 com\rh\management\Controllers\PontoController.class
 com\rh\management\Controllers\UsuarioController.class

@@ -1,3 +1,0 @@
-1;a;4000000;a;123;a;a;123.0;01/01/2023;a;a;true;username;password
-2;b;100000;b;12323;b;b;123456.0;01/01/2023;b;b;true;username;password
-3;c;30005;c;123456;c;c;9.87654321E8;01/01/2023;c;c;true;username;password

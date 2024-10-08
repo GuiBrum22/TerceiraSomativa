@@ -1,16 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: PontoControllerTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.159 s <<< FAILURE! -- in PontoControllerTest
-PontoControllerTest.testRegistrarEntrada -- Time elapsed: 0.087 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: A saída não deve ser registrada ainda. ==> expected: <null> but was: <2024-10-04T14:52:08.661279200>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertNull.failNotNull(AssertNull.java:50)
-	at org.junit.jupiter.api.AssertNull.assertNull(AssertNull.java:35)
-	at org.junit.jupiter.api.Assertions.assertNull(Assertions.java:287)
-	at PontoControllerTest.testRegistrarEntrada(PontoControllerTest.java:30)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.187 s -- in PontoControllerTest
