@@ -1,6 +1,0 @@
-Relatório de Funcionários Ativos
------------------------------
-Nome: a
-Cargo: a
-Departamento: a
------------------------------
