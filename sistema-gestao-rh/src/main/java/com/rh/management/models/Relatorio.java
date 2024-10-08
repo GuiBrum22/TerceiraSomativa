@@ -3,7 +3,7 @@ package com.rh.management.models;
 public class Relatorio {
     private int id;
     private Usuario usuario;
-    private Ponto ponto;  // Ponto pode ser null dependendo do tipo de relatório
+    private Ponto ponto;  
 
     // Construtor
     public Relatorio(int id, Usuario usuario, Ponto ponto) {
