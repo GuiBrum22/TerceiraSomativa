@@ -1,0 +1,8 @@
+1;diogo;12345678;sdfghjk;123456;asdfgh;sdfghj;123456.0;01/01/2023;qwdfgh;sdfghjk;true;username;password
+2;Maria Souza;987.654.321-00;Rua B;8888-8888;Analista;Financeiro;4500.0;15/02/2021;Banco B;Vale Alimentação;true;mariasouza;senha123
+6;Lucas Mendes;852.741.963-00;Rua G;3333-3333;Analista;TI;4500.0;12/09/2022;Banco G;Vale Transporte;true;lucasmendes;senha123
+7;Fernanda Costa;741.963.852-00;Rua H;2222-2222;Desenvolvedor;TI;5000.0;18/10/2020;Banco H;Vale Alimentação;true;fernandacosta;senha123
+5;Paulo Castro;963.852.741-00;Rua F;4444-4444;Coordenador;Marketing;6000.0;25/07/2017;Banco F;Plano Odontológico;true;paulocastro;senha123
+3;Carlos Pereira;321.654.987-00;Rua C;7777-7777;Gerente;Vendas;7000.0;20/03/2019;Banco C;Plano de Saúde;true;carlospereira;senha123
+4;Ana Lima;654.321.987-00;Rua E;5555-5555;Assistente;RH;3500.0;05/06/2018;Banco E;Vale Transporte;true;analima;senha123
+1;João Silva;123.456.789-10;Rua A;9999-9999;Desenvolvedor;TI;5000.0;10/01/2020;Banco A;Vale Transporte;true;joaosilva;senha123
